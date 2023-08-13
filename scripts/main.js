@@ -72,3 +72,88 @@ const departments = {
 }
 
 console.log(departments);
+
+// Opdracht 1 - Gegevens aanspreken
+// Opdracht 1a: Log het aantal medewerkers van de sales-afdeling in de console, in het volgende format: "De afdeling Sales heeft [x] medewerkers"
+
+console.log('De afdeling Sales heeft ' + departments.sales.numberOfEmployees + ' medewerkers.');
+
+// Opdracht 1b: Log de afdeling-beschrijving van de marketingafdeling in de console, in het volgende format: " Marketing is een leuke afdeling om te werken. [beschrijving]."
+
+console.log('Marketing is een leuke afdeling om te werken. ' + departments.marketing.description);
+
+// Opdracht 1c: Log het aantal medewerkers van de customer-service-afdeling in de console, in het volgende format: "De afdeling Customer Service heeft [aantal] medewerkers" Let op: er is iets raars aan de hand met deze property!
+
+console.log('De afdeling Customer Service heeft ' + departments["customer-service"].numberOfEmployees + ' medewerkers.');
+
+//     Opdracht 1d: Log de beschrijving van de functie "Verkoopmanager" in de console, in het volgende format: "Sales is een uitdagende afdeling om te werken als Verkoopmanager. [beschrijving functie Verkoopmanager]"
+
+console.log('Sales is een uitdagende afdeling om te werken als verkoopmanager. ' + departments.sales.jobs[1].description);
+
+// Opdracht 2 - prompten en beslissen
+
+// const userInput = prompt('Hoi! Hoe heet je?');
+// console.log(userInput);
+
+// Opdracht 2a: Gebruik bovenstaand voorbeeld en pas het zo aan dat de browser jou de volgende vraag stelt: Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]. Het antwoord dat jij invoert, log je uiteraard in de console. Tip: geef jouw input-prompt altijd in kleine letters ("marketing" in plaats van "Marketing" of "MARKETING"), dit voorkomt problemen in het script.
+
+const departmentChoice = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
+console.log(departmentChoice);
+
+
+// //     Opdracht 2b: tijd voor het echte werk! Op basis van wat de gebruiker invoert ("marketing", "sales" of "customer service") willen wij een beschrijving van die afdeling in de console loggen. Hiervoor typ je natuurlijk niet handmatig de beschrijvingen over! Je spreekt ze aan via het departments-object: hiervoor zul je dus een beslissingsstructuur moeten bouwen. Ongeacht de gekozen afdeling, log je de uitkomst in het volgende format: "Je koos [ingevoerde keuze]. [beschrijving afdeling]"
+// // Opdracht 2c: test of alles werkt door alle mogelijke afdelingen een keertje te voeren en te checken of je de gewenste output krijgt. Maak jouw beslisboom nu extra gebruiksvriendelijk door de melding "Ongeldige keuze. Probeer het opnieuw door de pagina te verversen." in de console te laten zien wanneer de gebruiker een spelfout maakt of iets verkeerds invoert. Tip: je kunt hiervoor console.error() gebruiken in plaats van console.log().
+//
+
+switch (departmentChoice) {
+    case 'marketing':
+        console.log('Je koos ' + departmentChoice + '. ' + departments.marketing.description);
+        break;
+    case 'sales':
+        console.log('Je koos ' + departmentChoice + '. ' + departments.sales.description);
+        break;
+    case 'customer-service':
+        console.log('Je koos ' + departmentChoice + '. ' + departments['customer-service'].description);
+        break;
+    default:
+        console.error('Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.');
+}
+
+// Opdracht 3 - een nieuwe prompt
+// Opdracht 3a: We gaan er voor nu even vanuit dat de gebruiker de afdeling 'marketing' heeft gekozen. Schrijf een nieuwe prompt die de gebruiker om het volgende vraagt
+
+const jobChoice = prompt('Je koos '+ [departmentChoice] + '. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in. 0: '
+    + departments[departmentChoice].jobs[0].title + ', 1: '
+    + departments[departmentChoice].jobs[1].title + ', 2: '
+    + departments[departmentChoice].jobs[2].title + ', 3: '
+    + departments[departmentChoice].jobs[3].title + '.'
+);
+
+console.log(jobChoice);
+
+//Opdracht 3b/3c
+
+switch (jobChoice) {
+    case '0'
+    :
+        console.log('Je koos ' + departments[departmentChoice].jobs[0].title + '. Een uitdagende rol! ' + departments[departmentChoice].jobs[0].description);
+        break;
+    case '1':
+        console.log('Je koos ' + departments[departmentChoice].jobs[1].title + '. Een uitdagende rol! ' + departments[departmentChoice].jobs[1].description);
+        break;
+    case '2':
+        console.log('Je koos ' + departments[departmentChoice].jobs[2].title + '. Een uitdagende rol! ' + departments[departmentChoice].jobs[2].description);
+        break;
+    case '3':
+        console.log('Je koos ' + departments[departmentChoice].jobs[3].title + '. Een uitdagende rol! ' + departments[departmentChoice].jobs[3].description);
+        break;
+        default:
+            console.error('Ongeldige keuze. Probeer het opnieuw door de pagina te verversen.');
+}
+
+// Opdracht 4: samenvoegen
+// 4a
+
+// console.log(departmentChoice + ' is een leuke afdeling om te werken. Er werken op dit moment ' + departments[departmentChoice].numberOfEmployees + ' medewerkers.');
+
+// 4b/4c Zie aanpassingen bij vraag 2 en 3.
